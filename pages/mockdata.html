@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="../node_modules/mockjs/dist/mock-min.js"></script>
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script>
+    // data	模型集合	array<object>	
+    //     modelName	模型名称	string	模型名称
+    //     sort	排序字段	number	@mock=1
+    //     status	状态 1-启用 2-未启用	number	@mock=1
+    //    
+    //  decisionBinning		array<object>	分箱及信审决策
+    //     id	id		@mock=1
+    //     levelResult	评级值		@mock=AA
+    //     status
+    $(function () {
+      $.ajax({
+        url: 'http://123.com',
+        dataType: 'json',
+        success: function (e) {
+          console.log(e)
+        }
+      })
+
+      Mock.mock('http://123.com', {
+        'binningData|2': [{
+            'binning': '(1,2]',
+            'level': '@cword("ABCDEFGHIJ", 2)',
+        }],
+        'modelData|3': [{
+            'id|1-5': 1,
+            'modelName': '@csentence(3, 5)',
+            'weight|1-3': 2
+        }]
+
+    })
+    })
+  </script>
+</body>
+
+</html>

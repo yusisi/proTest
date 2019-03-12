@@ -1,0 +1,6 @@
+{
+  "eslint.enable": false,
+  "git.ignoreLimitWarning": true,
+  "python.linting.pylintEnabled": false,
+  "python.pythonPath": "D:\\python\\python.exe"
+}
